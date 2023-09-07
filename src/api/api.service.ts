@@ -3,10 +3,10 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ApiService {
   task1(slackName: string, track: string) {
-    const timestamp = getCurrentTimestamp();
+    const [timestamp, currentDayOfWeek] = getDateTime();
     return {
       slack_name: slackName ? slackName : 'slack_name not provided',
-      current_day: 'Monday',
+      current_day: currentDayOfWeek,
       utc_time: timestamp,
       track: track ? track : 'track not provided',
       github_file_url:
@@ -17,6 +17,8 @@ export class ApiService {
   }
 }
 
-function getCurrentTimestamp(): string {
-  return new Date().toISOString();
+function getDateTime(): string[] {
+  const date = new Date();
+  const options: Intl.DateTimeFormatOptions = { weekday: 'long' };
+  return [date.toISOString(), date.toLocaleDateString('en-US', options)];
 }
