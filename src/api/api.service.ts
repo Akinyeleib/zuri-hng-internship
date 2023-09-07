@@ -10,7 +10,7 @@ export class ApiService {
       utc_time: timestamp,
       track: track ? track : 'track not provided',
       github_file_url:
-        'https://github.com/Akinyeleib/zuri-hng-internship/blob/main/file_name.ext',
+        'https://github.com/Akinyeleib/zuri-hng-internship/blob/main/src/api/api.service.ts',
       github_repo_url: 'https://github.com/Akinyeleib/zuri-hng-internship',
       status_code: '200',
     };
